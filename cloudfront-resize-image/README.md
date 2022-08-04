@@ -22,6 +22,7 @@ Important: this application uses various AWS services and there are costs associ
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed and configured
 * [Git Installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [AWS Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) (AWS SAM) installed
+* [Docker Installed](https://docs.docker.com/get-docker/)
 
 ## Deployment Instructions
 
@@ -33,9 +34,9 @@ Important: this application uses various AWS services and there are costs associ
     ```
     cd cloudfront-resize-image
     ```
-1. From the command line, use [AWS SAM](https://aws.amazon.com/serverless/sam/) to build and deploy the AWS resources as specified in the template.yml file:
+1. From the command line, use AWS SAM to build and deploy the AWS resources as specified in the template.yml file. The following code includes the [sam build --use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option to build the function inside a Lambda-like Docker container.
     ```
-    sam build
+    sam build --use-container
     sam deploy --guided
     ```
 1. During the prompts:
@@ -74,8 +75,7 @@ Important: this application uses various AWS services and there are costs associ
         Syntax:
         ```
         {CloudFrontSecureUrl}/original/example.jpg
-        {CloudFrontSecureUrl}/100x100/example.jpg
-        {CloudFrontSecureUrl}/500x500/example.jpg
+        {CloudFrontSecureUrl}/{Width}x{Height}/example.jpg
         ```
         
         Example original or common image sizes:
