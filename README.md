@@ -8,6 +8,6 @@ AWS code samples, architecture diagrams, CloudFormation and SAM templates, Serve
 
 ## About Me
 
-I am a Principal Solutions Architect, Serverless Developer, Database Engineer, and Data Integration Architect. I specialize in architecting and developing serverless, event-driven solutions.
+My name is Greg Davis. I am a Principal Solutions Architect, Serverless Developer, Database Engineer, and Data Integration Architect. I specialize in architecting and developing serverless, event-driven solutions.
 
 [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy) | [Credly](https://www.credly.com/users/gregtx/)
