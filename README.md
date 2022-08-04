@@ -6,5 +6,8 @@ AWS code samples, architecture diagrams, CloudFormation and SAM templates, Serve
 
 * [Amazon CloudFront with on-the-fly Image Resizing](./cloudfront-resize-image/) - Serve images through Amazon CloudFront with support for on-the-fly image resizing.
 
+## About Me
 
-[LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)
+I am a Principal Solutions Architect, Serverless Developer, Database Engineer, and Data Integration Architect. I specialize in architecting and developing serverless, event-driven solutions.
+
+[LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy) | [Credly](https://www.credly.com/users/gregtx/)
