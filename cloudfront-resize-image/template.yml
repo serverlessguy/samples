@@ -2,7 +2,7 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 Transform: 'AWS::Serverless-2016-10-31'
-Description: A CloudFront distribution with an S3 Bucket origin and API/Lambda origin to resize images.
+Description: A CloudFront distribution with an S3 Bucket origin and API/Lambda origin to resize images on-the-fly.
 
 # Global values that are applied to all applicable resources in this template
 Globals:
@@ -24,7 +24,7 @@ Resources:
     Type: 'AWS::ApiGatewayV2::Api'
     Properties:
       Name: !Ref AppName
-      Description: An Amazon API Gateway HTTP API and an AWS Lambda function.
+      Description: An HTTP API integrated with a Lambda function.
       ProtocolType: HTTP
       CorsConfiguration:
         AllowOrigins: ['*']
