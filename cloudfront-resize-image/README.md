@@ -30,9 +30,9 @@ Important: this application uses various AWS services and there are costs associ
     ``` 
     git clone https://github.com/gadavis2/samples
     ```
-1. Change directory to the cloudfront-resize-image directory:
+1. Change directory to the solution directory:
     ```
-    cd cloudfront-resize-image
+    cd samples\cloudfront-resize-image
     ```
 1. From the command line, use AWS SAM to build and deploy the AWS resources as specified in the template.yml file. The following code includes the [sam build --use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option to build the function inside a Lambda-like Docker container.
     ```
