@@ -1,5 +1,7 @@
 # S3 Cross-Account Replication with KMS
 
+**WARNING: THIS SOLUTION IS AN EXAMPLE ONLY AND NO SUPPORT IS PROVIDED!**
+
 ## Description
 
 Example of cross-account, same-region, S3 bucket replication (v2) using server-side encryption with customer-managed KMS keys.
