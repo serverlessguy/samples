@@ -2,7 +2,11 @@
 
 ## About Me
 
-My name is Greg Davis and I am known as the ServerlessGuy! I am a Principal Solutions Architect, Serverless Developer, Database Engineer, and Data Integration Architect. I specialize in architecting and developing serverless, event-driven solutions.
+My name is Greg Davis and I am a seasoned Senior Engineering Manager and Principal Solutions Architect with a proven track record in diverse technical domains. My expertise spans a range of roles, encompassing Serverless Development, Database Engineering, and Data Integration Architecture. My passion lies in crafting innovative cloud-native, serverless, event-driven solutions, and steering highly technical teams to success. I have over 8 years of experience managing development teams and over 15 years of full-stack software development experience.
+
+My proficiency extends across a wide spectrum of AWS services, with a particular focus on optimizing API Gateway, Lambda, Step Functions, SQS, SNS, S3, EventBridge, DynamoDB, Aurora, and RDS. I'm equally adept at leveraging SQL, JavaScript, Node.js, HTML, Infrastructure as Code, and deployment pipelines.
+
+I hold several prestigious technical certifications that underscore my expertise including AWS Solutions Architect Professional, AWS DevOps Engineer Professional, Microsoft Certified Solutions Associate SQL Server, and Certified Scrum Master.
 
 [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy) | [Credly](https://www.credly.com/users/gregtx/)
 
