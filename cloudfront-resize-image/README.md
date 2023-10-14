@@ -4,7 +4,7 @@
 
 ## How it works
 
-The purpose of this solution is to serve images through Amazon CloudFront with support for on-the-fly image resizing. The solution uses CloudFront, S3, API Gateway, and Lambda. The CloudFront distribution includes a cache behavior with an origin group and two origins. The following explains the flow of image requests made through the CloudFront URL.
+The purpose of this solution is to serve images through Amazon CloudFront with support for on-the-fly image resizing. The solution uses CloudFront, S3, API Gateway, and Lambda. The CloudFront distribution includes a cache behavior with an origin group and two origins, an S3 bucket and an HTTP API integrated with a Lambda function. If the image is not available in the CloudFront cache or the S3 bucket, the Lambda function returns a resized image in the requested dimensions. The following explains the flow of image requests made through the CloudFront URL.
 
 ![Diagram](./docs/cloudfront-resize-image.png)
 
