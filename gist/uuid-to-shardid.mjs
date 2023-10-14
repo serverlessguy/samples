@@ -1,3 +1,4 @@
+// WARNING: THIS SOLUTION IS AN EXAMPLE ONLY AND NO SUPPORT IS PROVIDED!
 // This function will convert a UUID into an integer which can be used for data sharding.
 
 // Prerequisite: npm install uuid
