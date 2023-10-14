@@ -48,3 +48,5 @@ $RECYCLE.BIN/
 
 node_modules
 .aws-sam
+package-lock.json
+package.json
