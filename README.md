@@ -20,6 +20,7 @@ AWS code samples, architecture diagrams, CloudFormation and SAM templates, Serve
 ## Public Gists
 
 1. [Amazon Athena Query](https://gist.github.com/gadavis2/3bb03e724a4dd27c73af731ff9e68e21) - An example Node.js Lambda function that queries Amazon Athena. The example includes using NextToken in a loop to retrieve all of the query results, and the logic to extract the column names and rows from the response.
+1. [UUID to Shard Id](https://gist.github.com/gadavis2/faf3d888a3110409b97bc18a59d7c807) - This function will convert a UUID into an integer which can be used for data sharding.
 
 ## External Links
 
