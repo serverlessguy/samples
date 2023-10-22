@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid';
     If shards = 1024, the returned shardId will range from 1 - 1024.
 */
 
-const shards = 8;
+const shards = 1048576;
 const shardId = getShardId(uuidv4(), shards);
 console.log(shardId);
 
