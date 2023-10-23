@@ -25,26 +25,44 @@
 //Prerequisite: npm install uuid
 import {v4 as uuidv4} from 'uuid';
 
+// CHANGING THE RING SIZE WILL CREATE DIFFERENT HASH KEYS FOR NODES AND OBJECTS.
+// DO NOT CHANGE THE RING SIZE UNLESS YOU ABSOLUTELY INTENDED TO.
+// Default 360 (to simulate the degrees of a full circle/ring).
+const ringSize = 360;
+
+// The number of total virtual nodes to add to the ring.
+const numVirtualNodes = 3;
+const spacing = Number(ringSize / numVirtualNodes);
+
 /*
     -------------------------------------------
     Determine position of nodes on hash ring.
     Create a two-dimenstional sorted array containing the list of nodes and associated ring position.
     -------------------------------------------
 */ 
+
+// List of IP addresses for nodes (servers).
 const nodes = ["10.0.10.1","172.16.10.1","192.168.10.11","192.168.10.12","192.168.10.13","2001:0db8:0:0:8d3:0:0:0","2001:0db8:0:0:8d3:0:0:1","2001:db8:3333:4444:5555:6666:7777:8888","2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF","2001:0db8:0001:0000:0000:0ab9:C0A8:0102"]
 let nodeType = "IPv4";
 let nodesPosition = [];
-for (let i = 0; i < nodes.length; i++) {
+for (let n = 0; n < nodes.length; n++) {
     // Check if IP address is not IPv4.
-    const count = nodes[i].split('.').length;
+    const count = nodes[n].split('.').length;
     if (count !== 4) {
         nodeType = "IPv6";
     }
-    // Create sub-array containing IP address and hash ring position.
-    let nodePos = new Array();
-    nodePos[0] = getRingPosition(nodeType, nodes[i]);
-    nodePos[1] = nodes[i];
-    nodesPosition.push(nodePos);
+    let origPosition = getRingPosition(nodeType, nodes[n])
+    // Create a sub-array containing the IP address and hash ring position for each virtual node.
+    for (let v = 0; v < numVirtualNodes; v++) {
+        // Determine the distance between virtual nodes on the ring.
+        let vPosition = origPosition + (v * spacing);
+        // If the position is greater than the ring size, loop around the ring.
+        if (vPosition > ringSize) vPosition -= ringSize;
+        let node = new Array();
+        node[0] = vPosition;
+        node[1] = nodes[n];
+        nodesPosition.push(node);
+    }
 }
 // Sort the two-dimenstional array by the first element (ring position).
 nodesPosition.sort((a,b) => a[0]-b[0])
@@ -68,18 +86,19 @@ console.log("Position of key on hash ring: ", keyPosition);
 */ 
 const nextNode = getNextNode(nodesPosition, keyPosition);
 console.log("Next node on hash ring for key: ", nextNode);
-function getNextNode(arr, value) {
+
+function getNextNode(nodesPosition, keyPosition) {
     let nextNode = [];
-    // If the key position is lower than the lowest node position, return the lowest node position.
-    if (value < arr[0][0]) {
-        nextNode = arr[0];
+    // If the key position is lower than or equal to the lowest node position, return the lowest node position.
+    // Or if the key position is greater than the highest node position, return the lowest node position.
+    if (keyPosition <= nodesPosition[0][0] || keyPosition > nodesPosition[nodesPosition.length-1][0]) {
+        nextNode = nodesPosition[0];
     // Otherwise, determine the next hightest node position.
     } else {
-        let i = arr.length;
-        while (arr[--i][0] >= value);
-        nextNode = arr[++i];
-        // If the key position is higher than the highest node position, return the lowest node position.
-        if (nextNode === undefined || nextNode === null) nextNode = arr[0];
+        // Loop through nodes on ring while the node position is less than the key position.
+        for (let i = 0; nodesPosition[i][0] < keyPosition; i++) {
+            nextNode = nodesPosition[i+1];
+        }
     }
     return nextNode;
 }
@@ -107,8 +126,10 @@ function getRingPosition(type, value) {
     // console.log(value);
     // console.log(valueBigInt);
 
-    // Determine the hash ring position using modulo of 360 (to simulate a circle/ring).
-    const position = Number(valueBigInt % BigInt(360));
+    // Determine the hash ring position using modulo of the ring size.
+    let position = Number(valueBigInt % BigInt(ringSize));
+    // // Do not allow zero position, set to 1 instead.
+    // if (position === 0) position = 1;
     return position;
 }
 
