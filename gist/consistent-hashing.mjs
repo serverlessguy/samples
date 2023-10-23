@@ -32,7 +32,7 @@
 import {v4 as uuidv4} from 'uuid';
 
 // CHANGING THE RING SIZE WILL CREATE DIFFERENT HASH KEYS FOR NODES AND OBJECTS.
-// DO NOT CHANGE THE RING SIZE UNLESS YOU ABSOLUTELY INTENDED TO.
+// DO NOT CHANGE THE RING SIZE UNLESS YOU KNOW WHAT YOU ARE DOING.
 // Default 360 (to simulate the degrees of a full circle/ring).
 const ringSize = 360;
 
@@ -50,17 +50,20 @@ const virtualNodeSpacing = parseInt(ringSize / numVirtualNodes);
 */ 
 
 // List of IP addresses for nodes (servers).
-const nodes = ["10.0.10.1","172.16.10.1","192.168.10.11","192.168.10.12","192.168.10.13","2001:0db8:0:0:8d3:0:0:0","2001:0db8:0:0:8d3:0:0:1","2001:db8:3333:4444:5555:6666:7777:8888","2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF","2001:0db8:0001:0000:0000:0ab9:C0A8:0102"]
-let nodeType = "IPv4";
+const nodes = ["172.16.10.1","2001:0db8:0:0:8d3:0:0:0","192.168.10.11","192.168.10.12","192.168.10.13","2001:0db8:0:0:8d3:0:0:1","2001:db8:3333:4444:5555:6666:7777:8888","2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF","2001:0db8:0001:0000:0000:0ab9:C0A8:0102"]
 
+// Determine how many times to loop to add nodes onto the ring.
 let nodesLength = nodes.length;
 if (nodes.length > ringSize) nodesLength = ringSize;
 
 let nodesOnRing = [];
 for (let n = 0; n < nodesLength; n++) {
-    // Check if IP address is not IPv4.
+    // Check type of IP address
+    let nodeType = "IPv4";
     const count = nodes[n].split('.').length;
-    if (count !== 4) {
+    if (count === 4) {
+        nodeType = "IPv4";
+    } else {
         nodeType = "IPv6";
     }
     let origPosition = getRingPosition(nodeType, nodes[n])
