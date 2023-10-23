@@ -2,8 +2,14 @@
     WARNING: THIS SOLUTION IS AN EXAMPLE ONLY AND NO SUPPORT IS PROVIDED!
     This solution uses a hash function to determine the hash ring position for UUID, IPv4, and IPv6.
     It is an example of distributed storage/caching using consistent hashing.
-    A sorted list of node positions on a hash ring is generated.
-    Then once a key value (UUID) is converted to a position on the hash ring, the next highest node can be found.
+    
+    How it works:
+    1. A list of node/server IP addresses (IPv4, IPv6) are converted into a hash table.
+    2. For each node (and virtual nodes), a position on the hash ring is determined and the hash table is sorted.
+    3. A key value (UUID) is converted to a position on the hash ring.
+    4. The node that is equal to, or immediately following, the key's hash value is identified.
+    
+    More info on consistent hashing: https://www.toptal.com/big-data/consistent-hashing
 
     Example output:
     List of nodes on hash ring:  [
@@ -19,7 +25,7 @@
         [ 321, '10.0.10.1' ]
     ]
     Position of key on hash ring:  247
-    Next node on hash ring for key:  [ 279, '2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF' ]
+    Key will use the following node:  [ 279, '2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF' ]
 */
 
 //Prerequisite: npm install uuid
@@ -32,7 +38,9 @@ const ringSize = 360;
 
 // The number of total virtual nodes to add to the ring.
 const numVirtualNodes = 3;
-const spacing = Number(ringSize / numVirtualNodes);
+
+// Space between virtual nodes on the ring.
+const virtualNodeSpacing = parseInt(ringSize / numVirtualNodes);
 
 /*
     -------------------------------------------
@@ -44,8 +52,12 @@ const spacing = Number(ringSize / numVirtualNodes);
 // List of IP addresses for nodes (servers).
 const nodes = ["10.0.10.1","172.16.10.1","192.168.10.11","192.168.10.12","192.168.10.13","2001:0db8:0:0:8d3:0:0:0","2001:0db8:0:0:8d3:0:0:1","2001:db8:3333:4444:5555:6666:7777:8888","2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF","2001:0db8:0001:0000:0000:0ab9:C0A8:0102"]
 let nodeType = "IPv4";
-let nodesPosition = [];
-for (let n = 0; n < nodes.length; n++) {
+
+let nodesLength = nodes.length;
+if (nodes.length > ringSize) nodesLength = ringSize;
+
+let nodesOnRing = [];
+for (let n = 0; n < nodesLength; n++) {
     // Check if IP address is not IPv4.
     const count = nodes[n].split('.').length;
     if (count !== 4) {
@@ -55,18 +67,18 @@ for (let n = 0; n < nodes.length; n++) {
     // Create a sub-array containing the IP address and hash ring position for each virtual node.
     for (let v = 0; v < numVirtualNodes; v++) {
         // Determine the distance between virtual nodes on the ring.
-        let vPosition = origPosition + (v * spacing);
+        let virtualPosition = origPosition + (v * virtualNodeSpacing);
         // If the position is greater than the ring size, loop around the ring.
-        if (vPosition > ringSize) vPosition -= ringSize;
+        if (virtualPosition > ringSize) virtualPosition -= ringSize;
         let node = new Array();
-        node[0] = vPosition;
+        node[0] = virtualPosition;
         node[1] = nodes[n];
-        nodesPosition.push(node);
+        nodesOnRing.push(node);
     }
 }
 // Sort the two-dimenstional array by the first element (ring position).
-nodesPosition.sort((a,b) => a[0]-b[0])
-console.log("List of nodes on hash ring: ", nodesPosition);
+nodesOnRing.sort((a,b) => a[0]-b[0])
+console.log("List of nodes on hash ring: ", nodesOnRing);
 
 /*
     -------------------------------------------
@@ -84,20 +96,20 @@ console.log("Position of key on hash ring: ", keyPosition);
     Determine next node on hash ring for a key.
     -------------------------------------------
 */ 
-const nextNode = getNextNode(nodesPosition, keyPosition);
-console.log("Next node on hash ring for key: ", nextNode);
+const nextNode = getNextNode(nodesOnRing, keyPosition);
+console.log("Key will use the following node: ", nextNode);
 
-function getNextNode(nodesPosition, keyPosition) {
+function getNextNode(nodesOnRing, keyPosition) {
     let nextNode = [];
     // If the key position is lower than or equal to the lowest node position, return the lowest node position.
     // Or if the key position is greater than the highest node position, return the lowest node position.
-    if (keyPosition <= nodesPosition[0][0] || keyPosition > nodesPosition[nodesPosition.length-1][0]) {
-        nextNode = nodesPosition[0];
+    if (keyPosition <= nodesOnRing[0][0] || keyPosition > nodesOnRing[nodesOnRing.length-1][0]) {
+        nextNode = nodesOnRing[0];
     // Otherwise, determine the next hightest node position.
     } else {
         // Loop through nodes on ring while the node position is less than the key position.
-        for (let i = 0; nodesPosition[i][0] < keyPosition; i++) {
-            nextNode = nodesPosition[i+1];
+        for (let i = 0; nodesOnRing[i][0] < keyPosition; i++) {
+            nextNode = nodesOnRing[i+1];
         }
     }
     return nextNode;
@@ -127,9 +139,10 @@ function getRingPosition(type, value) {
     // console.log(valueBigInt);
 
     // Determine the hash ring position using modulo of the ring size.
-    let position = Number(valueBigInt % BigInt(ringSize));
-    // // Do not allow zero position, set to 1 instead.
-    // if (position === 0) position = 1;
+    let position = parseInt(valueBigInt % BigInt(ringSize));
+    
+    // If modulo equals zero, then assign last position on ring.
+    if (position === 0) position = ringSize;
     return position;
 }
 
@@ -141,7 +154,7 @@ function ipv4ToBigInt(ipv4) {
 // Convert IPv6 to BigInt.
 // Supports uncompressed IPv6 addresses only.
 function ipv6ToBigInt(ipv6) {
-    return ipv6.split(':').map(str => Number('0x'+str)).reduce((int, value) => BigInt(int) * BigInt(65536) + BigInt(+value));
+    return ipv6.split(':').map(str => parseInt('0x'+str)).reduce((int, value) => BigInt(int) * BigInt(65536) + BigInt(+value));
 }
 
 // Convert UUID to BigInt.
