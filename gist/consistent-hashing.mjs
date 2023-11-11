@@ -162,9 +162,5 @@ function ipv6ToBigInt(ipv6) {
 
 // Convert UUID to BigInt.
 function uuidToBigInt(uuid) {
-    // Get the first 8 hex characters of the UUID.
-    const firstEight = uuid.substring(0, 8);
-    
-    // Convert the first 8 hex characters to big integer.
-    return BigInt(parseInt(firstEight, 16));
+    return BigInt("0x" + uuid.replace(/-/g, ""));
 }
