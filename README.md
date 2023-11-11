@@ -12,6 +12,9 @@ I hold several prestigious technical certifications, including AWS Solutions Arc
 
 Thank you for taking the time to get acquainted with my professional journey!
 
+Social Media: [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)  
+Certifications: [Microsoft](https://learn.microsoft.com/en-us/users/gregtx/transcript/7olk8u8e5qz9n9l) | [Credly](https://www.credly.com/users/gregtx/) | [BadgeCert](https://bcert.me/bc/html/show-badge.html?b=pkgebblx)
+
 ## In This Repo
 
 AWS code samples, architecture diagrams, CloudFormation and SAM templates, Serverless applications, and more.
