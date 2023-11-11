@@ -18,20 +18,16 @@ function getShardId(uuid, shards) {
     // Enforce maximum number of shards.
     if (shards > 1048576) shards = 1048576;
 
-    // Get the first 8 hex characters of the UUID.
-    const firstEight = uuid.substring(0, 8);
-    
-    // Convert the first 8 hex characters to an integer.
-    const intFirstEight = parseInt(firstEight, 16);
+    // Convert the uuid into a big int.
+    const bigIntUUID = BigInt("0x" + uuid.replace(/-/g, ""));
 
     // Determine the shardId using modulo of shards.
     // Add 1 so its not zero based.
-    const shardId = (intFirstEight % shards) + 1;
+    const shardId = parseInt((bigIntUUID % BigInt(shards)) + BigInt(1));
 
     // console.log(uuid);
     // console.log(shards);
-    // console.log(firstEight);
-    // console.log(intFirstEight);
+    // console.log(bigIntUUID);
 
     return shardId;
 }
