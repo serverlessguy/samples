@@ -95,23 +95,35 @@ aws cloudformation describe-stacks --stack-name demo-greengrass-stack --query 'S
     - Connection > SSH > Auth: Browse to the "keypair.ppk" file.
     - Connection > Data > Auto-login username: admin
     - Session > Host Name: Public DNS of EC2 instance (eg: ec2-0.0.0.0.compute-1.amazonaws.com)
-  - Watch the deployment occur on the EC2 instance by monitoring the log: `sudo tail -n 50 -F /greengrass/v2/logs/greengrass.log`
-  - Verify the aws.greengrass.Nucleus component configuration update with the following command: `sudo cat /greengrass/v2/config/effectiveConfig.yaml | grep jvmOptions`
+  - Watch the deployment occur on the EC2 instance by monitoring the log:
+  ```
+  sudo tail -n 50 -F /greengrass/v2/logs/greengrass.log
+  ```
+  - Verify the aws.greengrass.Nucleus component configuration update with the following command:
+  ```
+  sudo cat /greengrass/v2/config/effectiveConfig.yaml | grep jvmOptions
+  ```
 6. Go to [Greengrass Core Devices](https://us-east-1.console.aws.amazon.com/iot/home?region=us-east-1#/greengrass/v2/cores) in the AWS Management Console to verify that the EC2 instance is registered as a Greengrass device before proceeding with the installation process. It may take a few minutes after the EC2 instance is launched to see it registered as a Greengrass device.
 
 ### Create Deployment for the Greengrass Lambda Component
 
-1. List Greengrass components: `aws greengrassv2 list-components`
-  - Copy the componentVersion of the com.example.LambdaFunctionComponent (eg: 1.0.0).
-2. Update the "deployment.json" configuration file:
+1. List Greengrass components:
+```
+aws greengrassv2 list-components
+```
+2. Copy the componentVersion of the com.example.LambdaFunctionComponent (eg: 1.0.0).
+3. Update the "deployment.json" configuration file:
   - Update the targetArn to match the ThingGroupARN from the original CloudFormation output. You should only need to update the Region and AccountId.
   - Update the componentVersion of the com.example.LambdaFunctionComponent if needed. Refer to the Greengrass components list from a previous step.
-3. Create a new Greengrass Deployment:
+4. Create a new Greengrass Deployment:
 ```
 aws greengrassv2 create-deployment --cli-input-json file://deployment.json
 ```
 4. Monitor the deployment from the IoT [Greengrass Deployment console](https://us-east-1.console.aws.amazon.com/iot/home?region=us-east-1#/greengrass/v2/deployments) to verity it completes successfully.
-5. View com.example.LambdaFunctionComponent logs on the EC2 instance: `sudo tail -n 50 -f /greengrass/v2/logs/com.example.LambdaFunctionComponent.log`
+5. View com.example.LambdaFunctionComponent logs on the EC2 instance:
+```
+sudo tail -n 50 -f /greengrass/v2/logs/com.example.LambdaFunctionComponent.log
+```
 
 ### MQTT Test
 
@@ -122,5 +134,8 @@ aws greengrassv2 create-deployment --cli-input-json file://deployment.json
 ## Required for Dynamic Thing Groups
 
 Configure IoT Fleet Indexing through the AWS CLI or Management Console.
-- AWS CLI: `aws iot update-indexing-configuration --thing-indexing-configuration thingIndexingMode=REGISTRY_AND_SHADOW,thingConnectivityIndexingMode=STATUS`
+- AWS CLI: 
+```
+aws iot update-indexing-configuration --thing-indexing-configuration thingIndexingMode=REGISTRY_AND_SHADOW,thingConnectivityIndexingMode=STATUS
+```
 - AWS Management Console: AWS Iot > Settings > [Fleet indexing](https://us-east-1.console.aws.amazon.com/iot/home?region=us-east-1#/settings/indexing)
