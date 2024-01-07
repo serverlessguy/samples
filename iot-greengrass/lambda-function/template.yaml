@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Create a Lambda function that subscribes and publishes to IoT topics.'
+
+Parameters:
+  AppName:
+    Description: Enter a name for the application
+    Type: String
+    Default: 'demo-greengrass'
+    AllowedPattern: '^[a-z]+(-[a-z]+)*$'
+    ConstraintDescription: Must be lowercase a-z or hypen, 30 characters max
+    MaxLength: 30
+
+  IoTResponseTopic:
+    Description: "The IoT response topic"
+    Type: String
+    Default: 'demo-greengrass/response'
+
+
+Resources:
+  ####################################################################################
+  # Create an IAM Policy that allows Greengrass devices to invoke the Lambda function.
+  ####################################################################################
+  # LambdaInvokePolicy:
+  #   Type: 'AWS::IAM::Policy'
+  #   Properties:
+  #     # Associate this policy with the default Greengrass token exchange role.
+  #     Roles:
+  #       - 'GreengrassV2TokenExchangeRole'
+  #     PolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #         - Effect: Allow
+  #           Action: 'lambda:InvokeFunction'
+  #           Resource: !Sub ${LambdaFunction.Arn}*
+  
+  LambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs20.x
+      Architectures:
+        - arm64
+      CodeUri: src/
+      FunctionName: !Sub ${AppName}-function
+      Environment: 
+        Variables:
+          RESPONSE_TOPIC: !Ref IoTResponseTopic
+      Policies:
+        - arn:aws:iam::aws:policy/AWSIoTDataAccess
+
+  LambdaVersion:
+    Type: 'AWS::Lambda::Version'
+    Properties:
+      FunctionName: !Ref LambdaFunction
+
+  LambdaAlias:
+    Type: 'AWS::Lambda::Alias'
+    Properties:
+      FunctionName: !Ref LambdaFunction
+      FunctionVersion: !GetAtt LambdaVersion.Version
+      Name: demo-alias
+
+Outputs:
+  LambdaVersionArn:
+    Description: 'The Arn of the Lambda function version'
+    Value: !Ref LambdaVersion

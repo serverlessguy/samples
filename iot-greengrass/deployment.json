@@ -1,0 +1,15 @@
+{
+    "targetArn": "arn:aws:iot:us-east-1:633312256675:thinggroup/demo-greengrass-thing-group",
+    "deploymentName": "Add Lambda Function Component",
+    "components": {
+      "com.example.LambdaFunctionComponent": {
+        "componentVersion": "1.0.0"
+      }
+    },
+    "deploymentPolicies": {
+      "failureHandlingPolicy": "ROLLBACK"
+    },
+    "tags": {
+      "AppName": "demo-greengrass"
+    }
+  }
