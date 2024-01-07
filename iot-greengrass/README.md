@@ -13,7 +13,10 @@
 
 ### Create GreengrassV2TokenExchangeRole
 
-1. Change to the "iot-greengrass" directory: `cd iot-greengrass`
+1. Change to the "iot-greengrass" directory:
+```
+cd iot-greengrass
+```
 2. Deploy the "iam.yaml" to create the GreengrassV2TokenExchangeRole. Note that the "iam.yaml" file does not create the IAM Policy named "GreengrassV2TokenExchangeRoleAccess". That policy is generated automatically, and attached to the IAM Role named "GreengrassV2TokenExchangeRole", after the first Greengrass core device is created.
 ```
 aws cloudformation deploy --template-file iam.yaml --stack-name greengrass-v2-token-exchange-role-stack --capabilities CAPABILITY_NAMED_IAM
@@ -21,7 +24,10 @@ aws cloudformation deploy --template-file iam.yaml --stack-name greengrass-v2-to
 
 ### Create Lambda Function
 
-1. Change to the "iot-greengrass/lambda-function" directory: `cd lambda-function`
+1. Change to the "iot-greengrass/lambda-function" directory:
+```
+cd lambda-function
+```
 2. Build the Lambda function with all dependencies by using AWS SAM:
 ```
 sam build
@@ -51,7 +57,10 @@ SAM configuration environment [default]:
 ### Create Greengrass Lambda Component
 
 1. Documentation: [Import a Lambda function as a component](https://docs.aws.amazon.com/greengrass/v2/developerguide/import-lambda-function-cli.html)
-2. Change to the "iot-greengrass/lambda-function-component" directory: `cd ../lambda-function-component`
+2. Change to the "iot-greengrass/lambda-function-component" directory:
+```
+cd ../lambda-function-component
+```
 3. Update the "lambda-config.json" configuration file
   - Update "lambdaArn" to match the LambdaVersionArn from the SAM deploy CloudFormation output. You must specify an ARN that includes the version of the function. You can't use version aliases like $LATEST.
   - Update the "AWS_REGION" environment variable to match the region where this demo is being deployed (eg: us-east-1).
@@ -63,7 +72,10 @@ aws greengrassv2 create-component-version --cli-input-json file://lambda-config.
 
 ### Setup Greengrass Device
 
-1. Change to the "iot-greengrass" directory: `cd ..`
+1. Change to the "iot-greengrass" directory:
+```
+cd ..
+```
 2. Deploy the "template.yaml":
 ```
 aws cloudformation deploy --template-file template.yaml --stack-name demo-greengrass-stack --tags AppName=demo-greengrass --parameter-overrides MyIp=0.0.0.0/32 --capabilities CAPABILITY_IAM
