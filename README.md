@@ -6,11 +6,14 @@ I am a seasoned servant leader with a proven track record in diverse technical d
 
 My work philosophy revolves around embracing high-velocity decision making, differentiating between reversible and irreversible choices, and using the 80/20 rule to prioritize essential tasks while maintaining high standards. I encourage a fearless approach to mistakes, seeing them as valuable lessons. I work backwards from customer problems to create effective solutions. I use mechanisms to tackle recurring challenges and capitalize on new opportunities.
 
-My technical expertise extends across a wide spectrum of technologies, cloud services, and programming languages, with a particular focus on backend infrastructure, serverless development, microservices, event-driven architecture, purpose-built databases, data engineering, and data analysis. I excel in leveraging APIs, JavaScript, TypeScript, SQL, AI/ML, Infrastructure as Code, and automated deployment pipelines to drive projects to success.
+My technical expertise extends across a wide spectrum of technologies, cloud services, and programming languages, with a particular focus on backend infrastructure, serverless development, microservices, event-driven architecture, purpose-built databases, data engineering, and data analysis. I excel in leveraging APIs, JavaScript, TypeScript, SQL, NoSQL, Gen AI, Machine Learning, Infrastructure as Code, and automated deployment pipelines. I operate on the forefront, utilizing Generative AI to foster creativity, expedite content development, enhance code agility, and elevate quality… which significantly amplifies my ability to efficiently deliver successful projects.
 
 I hold several prestigious technical certifications, including AWS Solutions Architect Professional, AWS DevOps Engineer Professional, Microsoft Certified Solutions Associate SQL Server, and Certified Scrum Master. My diverse skill set and extensive experience make me a valuable asset for any organization seeking a dynamic leader with a proven history of delivering results in the field of software engineering, solutions architecture, and technology management.
 
 Thank you for taking the time to get acquainted with my professional journey!
+
+Social Media: [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)  
+Certifications: [Microsoft](https://learn.microsoft.com/en-us/users/gregtx/transcript/7olk8u8e5qz9n9l) | [Credly](https://www.credly.com/users/gregtx/) | [BadgeCert](https://bcert.me/bc/html/show-badge.html?b=pkgebblx)
 
 ## In This Repo
 
