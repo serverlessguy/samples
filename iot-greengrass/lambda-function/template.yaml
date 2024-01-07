@@ -18,22 +18,6 @@ Parameters:
 
 
 Resources:
-  ####################################################################################
-  # Create an IAM Policy that allows Greengrass devices to invoke the Lambda function.
-  ####################################################################################
-  # LambdaInvokePolicy:
-  #   Type: 'AWS::IAM::Policy'
-  #   Properties:
-  #     # Associate this policy with the default Greengrass token exchange role.
-  #     Roles:
-  #       - 'GreengrassV2TokenExchangeRole'
-  #     PolicyDocument:
-  #       Version: '2012-10-17'
-  #       Statement:
-  #         - Effect: Allow
-  #           Action: 'lambda:InvokeFunction'
-  #           Resource: !Sub ${LambdaFunction.Arn}*
-  
   LambdaFunction:
     Type: 'AWS::Serverless::Function'
     Properties:

@@ -1,5 +1,5 @@
 {
-    "targetArn": "arn:aws:iot:us-east-1:633312256675:thinggroup/demo-greengrass-thing-group",
+    "targetArn": "arn:aws:iot:us-east-1:{AccountId}:thinggroup/demo-greengrass-thing-group",
     "deploymentName": "Add Lambda Function Component",
     "components": {
       "com.example.LambdaFunctionComponent": {

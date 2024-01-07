@@ -1,11 +1,13 @@
 ## Prerequisites
 
 1. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) installed and configured with access to an AWS Account.
+1. [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+<!--- 
 1. [Python3](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/latest/installation/). The most recent version of Python includes pip.
 1. [Greengrass Development Kit (GDK) CLI](https://github.com/aws-greengrass/aws-greengrass-gdk-cli)
   - To install the latest version of the GDK CLI: `pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.6.1`
   - Run `gdk --help` or `gdk --version` to check if the GDK CLI is successfully installed.
-1. [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+--->
 
 ## Installation
 
@@ -48,7 +50,7 @@ SAM configuration environment [default]:
 ### Setup Greengrass Device
 
 1. Change to the "iot-greengrass" directory: `cd ..`
-1. Deploy the "template.yaml": `aws cloudformation deploy --template-file template.yaml --stack-name demo-greengrass-stack --tags AppName=demo-greengrass --parameter-overrides MyIp=24.28.24.69/32 --capabilities CAPABILITY_IAM`
+1. Deploy the "template.yaml": `aws cloudformation deploy --template-file template.yaml --stack-name demo-greengrass-stack --tags AppName=demo-greengrass --parameter-overrides MyIp=0.0.0.0/32 --capabilities CAPABILITY_IAM`
   - Here is an overview of what this CloudFormation stack provisions:
   - IAM Policy that allows Greengrass devices to provision themselves.
   - IoT Thing Group. When Greengrass is installed on a device, it associates the device with this Thing Group.
@@ -71,7 +73,7 @@ SAM configuration environment [default]:
   - PuTTy configuration:
     - Connection > SSH > Auth: Browse to the "keypair.ppk" file.
     - Connection > Data > Auto-login username: admin
-    - Session > Host Name: Public DNS of EC2 instance (eg: ec2-54-227-51-223.compute-1.amazonaws.com)
+    - Session > Host Name: Public DNS of EC2 instance (eg: ec2-0.0.0.0.compute-1.amazonaws.com)
   - Watch the deployment occur on the EC2 instance by monitoring the log: `sudo tail -n 50 -F /greengrass/v2/logs/greengrass.log`
   - Verify the aws.greengrass.Nucleus component configuration update with the following command: `sudo cat /greengrass/v2/config/effectiveConfig.yaml | grep jvmOptions`
 1. Go to [Greengrass Core Devices](https://us-east-1.console.aws.amazon.com/iot/home?region=us-east-1#/greengrass/v2/cores) in the AWS Management Console to verify that the EC2 instance is registered as a Greengrass device before proceeding with the installation process. It may take a few minutes after the EC2 instance is launched to see it registered as a Greengrass device.
@@ -93,11 +95,8 @@ SAM configuration environment [default]:
 1. Publish any message to the topic "demo-greengrass/request".
 1. If everything worked, you should see a message in the "demo-greengrass/response" topic.
 
-! Everything installs and deploys successfully, core device remains health, but MQTT test does not return a response !
-! May be able to reference Lambda Alias arn vs. Version arn !
-
 ## Required for Dynamic Thing Groups
 
-- Configure IoT Fleet Indexing through the AWS CLI or Management Console.
+- Configure IoT Fleet Indexing through the AWS CLI or Management Console:
   - AWS CLI: `aws iot update-indexing-configuration --thing-indexing-configuration thingIndexingMode=REGISTRY_AND_SHADOW,thingConnectivityIndexingMode=STATUS`
   - AWS Management Console: AWS Iot > Settings > [Fleet indexing](https://us-east-1.console.aws.amazon.com/iot/home?region=us-east-1#/settings/indexing)
