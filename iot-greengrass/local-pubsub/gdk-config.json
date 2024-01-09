@@ -1,0 +1,16 @@
+{
+  "component": {
+    "com.example.LocalPubSub": {
+      "author": "Amazon",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "bucket": "demo-greengrass",
+        "region": "us-east-1"
+      }
+    }
+  },
+  "gdk_version": "1.6.1"
+}

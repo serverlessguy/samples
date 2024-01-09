@@ -37,7 +37,12 @@
         "statusTimeoutInSeconds": 60,
         "maxIdleTimeInSeconds": 60,
         "maxInstancesCount": 100,
-        "maxQueueSize": 1000
+        "maxQueueSize": 1000,
+        "linuxProcessParams": {
+          "containerParams": {
+            "memorySizeInKB": 65536
+          }
+        }
       }
     }
   }

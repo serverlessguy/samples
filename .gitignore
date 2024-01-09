@@ -49,3 +49,14 @@ $RECYCLE.BIN/
 node_modules
 .aws-sam
 package-lock.json
+*build/
+build
+*dist/
+*.egg-info
+*__pycache__
+*htmlcov/
+*.coverage
+*.iml
+*.DS_Store
+*.eggs
+zip-build

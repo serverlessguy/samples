@@ -1,0 +1,19 @@
+{
+  "component": {
+    "com.example.IotPubSub": {
+      "author": "",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip",
+        "options": {
+          "zip_name": ""
+        }
+      },
+      "publish": {
+        "bucket": "demo-greengrass",
+        "region": "us-east-1"
+      }
+    }
+  },
+  "gdk_version": "1.3.0"
+}
