@@ -47,7 +47,7 @@ $RECYCLE.BIN/
 *.lnk
 
 node_modules
-**/dependencies/
+dependencies
 .aws-sam
 package-lock.json
 *build/
