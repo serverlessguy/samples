@@ -2,11 +2,11 @@
 
 ## About Me
 
-I'm a seasoned technical leader with over 25 years of experience building scalable systems and driving strategic innovation at industry-leading companies like Amazon, Northwoods Consulting, and Townsend Analytics. With 10+ years of people management experience, including successfully leading teams of managers, I excel at empowering high-performing, cross-functional teams and promoting a culture of continuous learning and improvement.
+Transformational Engineering Leader with 25+ years of experience driving strategic innovation, building scalable systems, and leading high-performing teams at industry-leading companies like Amazon, Northwoods Consulting, and Townsend Analytics. Proven track record of successfully managing teams of managers, creating a culture of continuous learning, and empowering cross-functional teams to deliver impactful results.
 
-My technical expertise focuses on cloud services, backend infrastructure, serverless development, APIs, microservices, AI/ML, database design, and event-driven architecture. I leverage data-driven insights, Agile methodologies, and innovative solutions to deliver successful projects that address complex business challenges. Certified in AWS, Microsoft, and Scrum, I also develop comprehensive training programs to ensure my teams remain at the forefront of evolving technologies.
+Technical expertise spans cloud services, backend infrastructure, serverless development, APIs, microservices, AI/ML, database design, and event-driven architecture. Skilled in leveraging data-driven insights, Agile methodologies, and innovative solutions to tackle complex business challenges. Certified in AWS, Microsoft, and Scrum, with a strong commitment to developing comprehensive training programs that keep teams at the forefront of evolving technologies.
 
-With a strong customer-centric mindset, I align technology solutions with real-world needs, making me a valuable asset for organizations seeking a dynamic technology leader to drive transformative results.
+Customer-centric and results-driven, I align technology solutions with real-world needs, making me a valuable asset for organizations seeking a dynamic engineering leader to drive innovation, growth, and success.
 
 Social Media: [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)  
 Certifications: [Microsoft](https://learn.microsoft.com/en-us/users/gregtx/transcript/7olk8u8e5qz9n9l) | [Credly](https://www.credly.com/users/gregtx/) | [BadgeCert](https://bcert.me/bc/html/show-badge.html?b=pkgebblx)
