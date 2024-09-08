@@ -17,6 +17,7 @@ AWS code samples, architecture diagrams, CloudFormation and SAM templates, Serve
 
 1. [Amazon CloudFront with on-the-fly Image Resizing](./cloudfront-resize-image/) - Serve images through Amazon CloudFront with support for on-the-fly image resizing.
 1. [S3 Cross-Account Replication with KMS](./s3-cross-account-replication-with-kms) - Replicate objects between two S3 buckets in different accounts within the same region using server-side encryption with customer-managed KMS keys.
+1. [Deploy AWS IoT Greengrass v2](https://github.com/serverlessguy/iot-greengrass) - Setup and deploy custom components using AWS IoT Greengrass, demonstrating advanced capabilities in IoT device management and communication.
 
 ## Public Gists
 
