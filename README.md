@@ -6,7 +6,7 @@ Transformational Engineering Leader with 25+ years of experience driving strateg
 
 Technical expertise spans cloud services, backend infrastructure, serverless development, APIs, DevOps, AI/ML, database design, and event-driven architecture. Skilled in leveraging data-driven insights, Agile methodologies, and innovative solutions to tackle complex business challenges. Certified in AWS, Microsoft, and Scrum, with a strong commitment to developing comprehensive training programs that keep teams at the forefront of evolving technologies.
 
-Customer-centric and results-driven, I align technology solutions with real-world needs, making me a valuable asset for organizations seeking a dynamic engineering leader to drive innovation, growth, and success.
+Customer-centric and results-driven, I align technology solutions with real-world needs, making me a valuable asset for organizations seeking a dynamic engineering leader to drive innovation, revenue growth, and success.
 
 Social Media: [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)  
 Certifications: [Microsoft](https://learn.microsoft.com/en-us/users/gregtx/transcript/7olk8u8e5qz9n9l) | [Credly](https://www.credly.com/users/gregtx/) | [BadgeCert](https://bcert.me/bc/html/show-badge.html?b=pkgebblx)
