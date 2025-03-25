@@ -2,11 +2,11 @@
 
 ## About Me
 
-Transformational Engineering Leader with 25+ years of experience driving strategic innovation, building scalable systems, and leading high-performing teams at industry-leading companies like Amazon, Northwoods Consulting, and Townsend Analytics. Proven track record of successfully managing teams of managers, creating a culture of continuous learning, and empowering cross-functional teams to deliver impactful results.
+Transformational Engineering I've spent over 25 years leading engineering teams, building scalable systems, and solving tough technical challenges at companies like Meta, Amazon, Northwoods Consulting, and Townsend Analytics. My focus is on developing strong teams, creating a culture of learning, and delivering solutions that actually make an impact.
 
-Technical expertise spans cloud services, backend infrastructure, serverless development, APIs, DevOps, AI/ML, database design, and event-driven architecture. Skilled in leveraging data-driven insights, Agile methodologies, and innovative solutions to tackle complex business challenges. Certified in AWS, Microsoft, and Scrum, with a strong commitment to developing comprehensive training programs that keep teams at the forefront of evolving technologies.
+My technical background includes cloud services, backend infrastructure, serverless development, APIs, DevOps, AI/ML, database design, and event-driven architecture. I use data, Agile practices, and real-world problem-solving to drive results. I’m also AWS and Microsoft certified and have built training programs to keep teams sharp on the latest technologies.
 
-Customer-centric and results-driven, I align technology solutions with real-world needs, making me a valuable asset for organizations seeking a dynamic engineering leader to drive innovation, revenue growth, and success.
+I believe technology should serve a purpose—whether that’s improving efficiency, driving revenue, or making life easier for end users. I enjoy working with smart people, tackling complex problems, and turning ideas into reality.
 
 Social Media: [LinkedIn](https://www.linkedin.com/in/gregtx/) | [Twitter](https://twitter.com/ServerlessGuy)  
 Certifications: [Microsoft](https://learn.microsoft.com/en-us/users/gregtx/transcript/7olk8u8e5qz9n9l) | [Credly](https://www.credly.com/users/gregtx/) | [BadgeCert](https://bcert.me/bc/html/show-badge.html?b=pkgebblx)
