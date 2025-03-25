@@ -2,7 +2,7 @@
 
 ## About Me
 
-Transformational Engineering I've spent over 25 years leading engineering teams, building scalable systems, and solving tough technical challenges at companies like Meta, Amazon, Northwoods Consulting, and Townsend Analytics. My focus is on developing strong teams, creating a culture of learning, and delivering solutions that actually make an impact.
+I've spent over 25 years leading engineering teams, building scalable systems, and solving tough technical challenges at companies like Meta, Amazon, Northwoods Consulting, and Townsend Analytics. My focus is on developing strong teams, creating a culture of learning, and delivering solutions that actually make an impact.
 
 My technical background includes cloud services, backend infrastructure, serverless development, APIs, DevOps, AI/ML, database design, and event-driven architecture. I use data, Agile practices, and real-world problem-solving to drive results. I’m also AWS and Microsoft certified and have built training programs to keep teams sharp on the latest technologies.
 
